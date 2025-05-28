@@ -157,33 +157,38 @@
       background-color: #6b7280;
       border-color: #6b7280;
     }
-   @media (max-width: 992px) {
+  @media (max-width: 992px) {
     .navbar-collapse {
         background-color: #0f172a;
         position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
+        top: 100%; /* Position below the navbar */
+        right: 10px; /* Align to the right side */
+        width: 200px; /* Compact width */
         z-index: 1000;
-        padding: 15px;
-        border-radius: 0 0 8px 8px;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-        max-height: calc(100vh - 56px); /* Prevent overflow on small screens */
-        overflow-y: auto; /* Allow scrolling if content overflows */
+        padding: 10px;
+        border-radius: 8px; /* Rounded corners for a floating look */
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+        max-height: calc(100vh - 56px); /* Prevent overflow */
+        overflow-y: auto;
+        transition: opacity 0.3s ease, transform 0.3s ease;
+        transform: translateY(-10px); /* Slight slide effect when closed */
+        opacity: 0;
+        visibility: hidden;
     }
     .navbar-collapse.show {
         display: block !important;
         opacity: 1 !important;
         visibility: visible !important;
+        transform: translateY(0); /* Slide into place when open */
     }
     .navbar-nav {
         width: 100%;
         flex-direction: column;
     }
     .nav-link {
-        padding: 12px 15px;
+        padding: 8px 12px; /* Smaller padding for compact look */
         color: #e0e0e0 !important;
-        font-size: 1.1rem;
+        font-size: 1rem; /* Slightly smaller font */
         transition: background-color 0.2s, color 0.2s;
     }
     .nav-link:hover {
