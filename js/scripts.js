@@ -21,29 +21,61 @@ document.addEventListener('DOMContentLoaded', () => {
         localStorage.setItem('theme', isLight ? 'light' : 'dark');
     });
 
-    // Prevent navbar collapse from closing prematurely on mobile
+    // Navbar toggle functionality
     const navbarToggler = document.querySelector('.navbar-toggler');
-    const navbarCollapse = document.querySelector('.navbar-collapse');
+    const navbarCollapse = document.querySelector('#navbarNav');
     const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
 
-    navbarToggler.addEventListener('click', (e) => {
-        e.stopPropagation();
-        navbarCollapse.classList.toggle('show');
+    // Initialize Bootstrap Collapse
+    const bsCollapse = new bootstrap.Collapse(navbarCollapse, {
+        toggle: false
     });
 
+    // Toggle navbar on click
+    navbarToggler.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        bsCollapse.toggle();
+        navbarToggler.setAttribute('aria-expanded', navbarCollapse.classList.contains('show'));
+    });
+
+    // Prevent clicks inside navbar from closing it
     navbarCollapse.addEventListener('click', (e) => {
         e.stopPropagation();
     });
 
+    // Smooth scrolling and collapse navbar on link click
     navLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            navbarCollapse.classList.remove('show');
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const targetId = link.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
+
+            if (targetElement) {
+                const navbarHeight = document.querySelector('.navbar').offsetHeight;
+                const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - navbarHeight;
+
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+
+                // Close navbar after clicking a link
+                bsCollapse.hide();
+                navbarToggler.setAttribute('aria-expanded', 'false');
+            }
         });
     });
 
+    // Close navbar when clicking outside (debounced for mobile)
+    let isToggling = false;
     document.addEventListener('click', (e) => {
-        if (!navbarCollapse.contains(e.target) && !navbarToggler.contains(e.target)) {
-            navbarCollapse.classList.remove('show');
+        if (isToggling) return;
+        if (!navbarCollapse.contains(e.target) && !navbarToggler.contains(e.target) && navbarCollapse.classList.contains('show')) {
+            isToggling = true;
+            bsCollapse.hide();
+            navbarToggler.setAttribute('aria-expanded', 'false');
+            setTimeout(() => { isToggling = false; }, 300);
         }
     });
 

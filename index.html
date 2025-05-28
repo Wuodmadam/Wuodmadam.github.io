@@ -157,28 +157,50 @@
       background-color: #6b7280;
       border-color: #6b7280;
     }
-    @media (max-width: 992px) {
-      .navbar-collapse {
+   @media (max-width: 992px) {
+    .navbar-collapse {
         background-color: #0f172a;
-        position: sticky;
-        top: 0;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
         z-index: 1000;
-        padding: 10px;
-      }
-      .navbar-nav {
+        padding: 15px;
+        border-radius: 0 0 8px 8px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        max-height: calc(100vh - 56px); /* Prevent overflow on small screens */
+        overflow-y: auto; /* Allow scrolling if content overflows */
+    }
+    .navbar-collapse.show {
+        display: block !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+    }
+    .navbar-nav {
         width: 100%;
-      }
-      .nav-link {
-        padding: 10px 15px;
-      }
-      .hero-section {
+        flex-direction: column;
+    }
+    .nav-link {
+        padding: 12px 15px;
+        color: #e0e0e0 !important;
+        font-size: 1.1rem;
+        transition: background-color 0.2s, color 0.2s;
+    }
+    .nav-link:hover {
+        background-color: #1e293b;
+        color: #93c5fd !important;
+    }
+    .navbar-toggler {
+        z-index: 1001;
+    }
+    .hero-section {
         padding: 60px 0;
-      }
-      .about-section img {
+    }
+    .about-section img {
         width: 200px;
         height: 200px;
-      }
     }
+}
   </style>
 </head>
 <body class="bg-gray-900">
