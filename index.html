@@ -65,40 +65,83 @@
       text-align: center;
     }
     .about-section .card {
-  background-color: #1e293b;
-  border-radius: 12px;
-  transition: transform 0.3s, box-shadow 0.3s;
-}
-.about-section .card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
-}
-.about-section .rounded-circle {
-  border: 4px solid #3b82f6;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-}
-.about-section .list-unstyled li {
-  display: flex;
-  align-items: center;
-  font-size: 1.1rem;
-}
-.about-section .text-primary {
-  color: #3b82f6 !important;
-}
-.light-mode .about-section .card {
-  background-color: #ffffff;
-  color: #1f2937;
-}
-.light-mode .about-section .text-primary {
-  color: #1e40af !important;
-}
-    .about-section img {
-      width: 250px;
-      height: 250px;
-      border-radius: 50%;
-      object-fit: cover;
+      background-color: #1e293b;
+      border-radius: 12px;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .about-section .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+    }
+    .about-section .rounded-circle {
       border: 4px solid #3b82f6;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    }
+    .about-section .list-unstyled li {
+      display: flex;
+      align-items: center;
+      font-size: 1.1rem;
+    }
+    .about-section .text-primary {
+      color: #3b82f6 !important;
+    }
+    .about-section .scrollable-content {
+      max-height: 300px; /* Fixed height for scrollable area */
+      overflow-y: auto; /* Enable vertical scrolling */
+      padding-right: 10px; /* Space for scrollbar */
+    }
+    .about-section .scrollable-content::-webkit-scrollbar {
+      width: 8px;
+    }
+    .about-section .scrollable-content::-webkit-scrollbar-track {
+      background: #2d3748;
+      border-radius: 4px;
+    }
+    .about-section .scrollable-content::-webkit-scrollbar-thumb {
+      background: #3b82f6;
+      border-radius: 4px;
+    }
+    .about-section .scrollable-content::-webkit-scrollbar-thumb:hover {
+      background: #2563eb;
+    }
+    .light-mode .about-section .card {
+      background-color: #ffffff;
+      color: #1f2937;
+    }
+    .light-mode .about-section .text-primary {
+      color: #1e40af !important;
+    }
+    .light-mode .about-section .scrollable-content::-webkit-scrollbar-track {
+      background: #e5e7eb;
+    }
+    .light-mode .about-section .scrollable-content::-webkit-scrollbar-thumb {
+      background: #1e40af;
+    }
+    .light-mode .about-section .scrollable-content::-webkit-scrollbar-thumb:hover {
+      background: #1e3a8a;
+    }
+    .projects-section .card {
+      min-height: 450px; /* Fixed minimum height for all cards */
+    }
+    .projects-section .card-img-top {
+      height: 200px; /* Fixed height for images */
+      object-fit: cover; /* Ensure images fill the space without distortion */
+    }
+    .projects-section .card-body {
+      display: flex;
+      flex-direction: column;
+    }
+    .projects-section .card-text {
+      flex-grow: 1; /* Allows text to take available space */
+      min-height: 100px; /* Ensures consistent text area height */
+      overflow: hidden; /* Prevents overflow if text is too long */
+    }
+    .projects-section .mt-auto {
+      margin-top: auto; /* Pushes buttons to the bottom of the card */
+    }
+    .light-mode .projects-section .card {
+      background-color: #ffffff;
+      color: #1f2937;
     }
     .card {
       background-color: #1e293b;
@@ -185,89 +228,67 @@
       background-color: #6b7280;
       border-color: #6b7280;
     }
-  @media (max-width: 992px) {
-    .navbar-collapse {
+    @media (max-width: 992px) {
+      .navbar-collapse {
         background-color: #0f172a;
         position: absolute;
-        top: 100%; /* Position below the navbar */
-        right: 10px; /* Align to the right side */
-        width: 200px; /* Compact width */
+        top: 100%;
+        right: 10px;
+        width: 200px;
         z-index: 1000;
         padding: 10px;
-        border-radius: 8px; /* Rounded corners for a floating look */
+        border-radius: 8px;
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
-        max-height: calc(100vh - 56px); /* Prevent overflow */
+        max-height: calc(100vh - 56px);
         overflow-y: auto;
         transition: opacity 0.3s ease, transform 0.3s ease;
-        transform: translateY(-10px); /* Slight slide effect when closed */
+        transform: translateY(-10px);
         opacity: 0;
         visibility: hidden;
-    }
-    .navbar-collapse.show {
+      }
+      .navbar-collapse.show {
         display: block !important;
         opacity: 1 !important;
         visibility: visible !important;
-        transform: translateY(0); /* Slide into place when open */
-    }
-    .navbar-nav {
+        transform: translateY(0);
+      }
+      .navbar-nav {
         width: 100%;
         flex-direction: column;
-    }
-    .nav-link {
-        padding: 8px 12px; /* Smaller padding for compact look */
+      }
+      .nav-link {
+        padding: 8px 12px;
         color: #e0e0e0 !important;
-        font-size: 1rem; /* Slightly smaller font */
+        font-size: 1rem;
         transition: background-color 0.2s, color 0.2s;
-    }
-    .nav-link:hover {
+      }
+      .nav-link:hover {
         background-color: #1e293b;
         color: #93c5fd !important;
-    }
-    .navbar-toggler {
+      }
+      .navbar-toggler {
         z-index: 1001;
-    }
-    .hero-section {
+      }
+      .hero-section {
         padding: 60px 0;
-    }
-    .about-section img {
+      }
+      .about-section .rounded-circle {
         width: 200px;
         height: 200px;
+      }
+      .about-section .scrollable-content {
+        max-height: 250px; /* Smaller height for mobile */
+      }
+      .projects-section .card {
+        min-height: 400px;
+      }
+      .projects-section .card-img-top {
+        height: 150px;
+      }
+      .projects-section .card-text {
+        min-height: 80px;
+      }
     }
-    .projects-section .card {
-  min-height: 450px; /* Fixed minimum height for all cards */
-}
-.projects-section .card-img-top {
-  height: 200px; /* Fixed height for images */
-  object-fit: cover; /* Ensure images fill the space without distortion */
-}
-.projects-section .card-body {
-  display: flex;
-  flex-direction: column;
-}
-.projects-section .card-text {
-  flex-grow: 1; /* Allows text to take available space */
-  min-height: 100px; /* Ensures consistent text area height */
-  overflow: hidden; /* Prevents overflow if text is too long */
-}
-.projects-section .mt-auto {
-  margin-top: auto; /* Pushes buttons to the bottom of the card */
-}
-.light-mode .projects-section .card {
-  background-color: #ffffff;
-  color: #1f2937;
-}
-@media (max-width: 768px) {
-  .projects-section .card {
-    min-height: 400px; /* Slightly smaller height for mobile */
-  }
-  .projects-section .card-img-top {
-    height: 150px; /* Smaller image height for mobile */
-  }
-  .projects-section .card-text {
-    min-height: 80px; /* Adjust text area for mobile */
-  }
-}
-}
   </style>
 </head>
 <body class="bg-gray-900">
@@ -307,73 +328,87 @@
   <!-- About Section -->
   <section id="about" class="about-section py-5">
     <div class="container" data-aos="fade-up">
-      <h2 class="text-center mb-5" style="font-weight: bold;">About Me</h2>
+      <h2 class="text-center mb-5" style="font-weight: bold; color: #3b82f6;">About Me</h2>
       <div class="row align-items-center">
-        <div class="col-md-4 text-center">
+        <div class="col-md-4 text-center mb-4 mb-md-0">
           <figure>
-            <img src="images/about/1.jpg" alt="Jerry Odhiambo Profile Photo" loading="lazy">
+            <img src="images/about/1.jpg" alt="Jerry Odhiambo Profile Photo" loading="lazy" class="img-fluid rounded-circle shadow-lg">
           </figure>
         </div>
         <div class="col-md-8">
-          <p class="lead">I’m a passionate Data Scientist with expertise in Python, SQL, and data visualization. My mission is to transform raw data into actionable insights through compelling storytelling.</p>
-          <p class="lead">I hold a Bachelor's degree in Computer Science and have completed several certifications in Data Science and Machine Learning. My experience includes working on diverse projects, from predictive modeling to data visualization, where I leverage my skills to drive data-driven decisions.</p>
-          <p class="lead">In my free time, I enjoy exploring new technologies, contributing to open-source projects, and sharing knowledge through my blog.</p>
-          <p class="lead">Feel free to connect with me on LinkedIn or check out my projects on GitHub!</p>
+          <div class="card bg-dark text-white p-4 rounded-lg shadow-lg">
+            <h3 class="h4 fw-bold mb-3">Hello, I'm Jerry Odhiambo</h3>
+            <div class="scrollable-content">
+              <p class="lead mb-3">A passionate Data Scientist skilled in Python, SQL, and data visualization, turning data into insights.</p>
+              <ul class="list-unstyled mb-4">
+                <li class="mb-2"><i class="fas fa-graduation-cap me-2 text-primary"></i>Bachelor's degree in Computer Science</li>
+                <li class="mb-2"><i class="fas fa-certificate me-2 text-primary"></i>Certified in Data Science and Machine Learning</li>
+                <li class="mb-2"><i class="fas fa-briefcase me-2 text-primary"></i>Explored Titanic dataset, analyzing survival factors via profiling, univariate, bivariate, multivariate analysis, and outlier detection</li>
+                <li class="mb-2"><i class="fas fa-code me-2 text-primary"></i>Active contributor to open-source projects</li>
+                <li><i class="fas fa-book me-2 text-primary"></i>Enjoys sharing knowledge through my blog</li>
+              </ul>
+              <p class="mb-3">In my free time, I explore new technologies and stay updated with the latest trends in data science.</p>
+            </div>
+            <div class="d-flex gap-3 mt-3">
+              <a href="https://www.linkedin.com/in/jerry-odhiambo/" class="btn btn-outline-primary" target="_blank">Connect on LinkedIn</a>
+              <a href="https://github.com/Wuodmadam" class="btn btn-outline-primary" target="_blank">View GitHub</a>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
- <!-- Projects Section -->
-<section id="projects" class="projects-section bg-light py-5">
-  <div class="container" data-aos="fade-up">
-    <h2 class="text-center mb-5" style="font-weight: bold; color: #1f2937;">Projects</h2>
-    <div class="row">
-      <!-- Project 1 -->
-      <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="100">
-        <div class="card h-100">
-          <img src="images/projects/netflix1.png" class="card-img-top" alt="Netflix Data Wrangling Project" loading="lazy">
-          <div class="card-body d-flex flex-column">
-            <h5 class="card-title">Netflix Data Wrangling</h5>
-            <p class="card-text flex-grow-1">Converted a chaotic Netflix dataset into a structured, insight-rich resource, unlocking meaningful and actionable analysis.</p>
-            <div class="mt-auto">
-              <a href="https://medium.com/@jerrypatrick999/data-and-ai-journey-at-cybershujaa-a84312c40bd8" class="btn btn-primary" target="_blank">Blog Post</a>
-              <a href="https://www.kaggle.com/code/odhiambojerry/netflixdatawrangling" class="btn btn-secondary">Source Code</a>
+  <!-- Projects Section -->
+  <section id="projects" class="projects-section bg-light py-5">
+    <div class="container" data-aos="fade-up">
+      <h2 class="text-center mb-5" style="font-weight: bold; color: #1f2937;">Projects</h2>
+      <div class="row">
+        <!-- Project 1 -->
+        <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="100">
+          <div class="card h-100">
+            <img src="images/projects/netflix1.png" class="card-img-top" alt="Netflix Data Wrangling Project" loading="lazy">
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title">Netflix Data Wrangling</h5>
+              <p class="card-text flex-grow-1">Converted a chaotic Netflix dataset into a structured, insight-rich resource, unlocking meaningful and actionable analysis.</p>
+              <div class="mt-auto">
+                <a href="https://medium.com/@jerrypatrick999/data-and-ai-journey-at-cybershujaa-a84312c40bd8" class="btn btn-primary" target="_blank">Blog Post</a>
+                <a href="https://www.kaggle.com/code/odhiambojerry/netflixdatawrangling" class="btn btn-secondary">Source Code</a>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <!-- Project 2 -->
-      <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="200">
-        <div class="card h-100">
-          <img src="images/projects/pairplots for multivariate analysis.png" class="card-img-top" alt="Titanic Disaster Dashboard Project" loading="lazy">
-          <div class="card-body d-flex flex-column">
-            <h5 class="card-title">Titanic Disaster Dashboard</h5>
-            <p class="card-text flex-grow-1">Explored Titanic dataset, analyzing survival factors via profiling, univariate, bivariate, multivariate analysis, and outlier detection.</p><br/>
-            <div class="mt-auto">
-              <a href="https://github.com/Wuodmadam/Kaggle-notebook-Titanic/blob/master/README.md" class="btn btn-primary">Blog Post</a>
-              <a href="https://github.com/Wuodmadam/Kaggle-notebook-Titanic/blob/master/TitanicDataset.ipynb" class="btn btn-secondary">Source Code</a>
+        <!-- Project 2 -->
+        <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="200">
+          <div class="card h-100">
+            <img src="images/projects/pairplots for multivariate analysis.png" class="card-img-top" alt="Titanic Disaster Dashboard Project" loading="lazy">
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title">Titanic Disaster Dashboard</h5>
+              <p class="card-text flex-grow-1">Explored Titanic dataset, analyzing survival factors via profiling, univariate, bivariate, multivariate analysis, and outlier detection.</p>
+              <div class="mt-auto">
+                <a href="https://github.com/Wuodmadam/Kaggle-notebook-Titanic/blob/master/README.md" class="btn btn-primary">Blog Post</a>
+                <a href="https://github.com/Wuodmadam/Kaggle-notebook-Titanic/blob/master/TitanicDataset.ipynb" class="btn btn-secondary">Source Code</a>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <!-- Project 3 -->
-      <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="300">
-        <div class="card h-100">
-          <img src="https://via.placeholder.com/300x200?text=Project+3" class="card-img-top" alt="Predictive Modeling Project" loading="lazy">
-          <div class="card-body d-flex flex-column">
-            <h5 class="card-title">Predictive Modeling</h5>
-            <p class="card-text flex-grow-1">Developed a machine learning model using Scikit-learn to predict customer churn with 85% accuracy.</p>
-            <div class="mt-auto">
-              <a href="#" class="btn btn-primary">Blog Post</a>
-              <a href="#" class="btn btn-secondary">Source Code</a>
+        <!-- Project 3 -->
+        <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="300">
+          <div class="card h-100">
+            <img src="https://via.placeholder.com/300x200?text=Project+3" class="card-img-top" alt="Predictive Modeling Project" loading="lazy">
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title">Predictive Modeling</h5>
+              <p class="card-text flex-grow-1">Developed a machine learning model using Scikit-learn to predict customer churn with 85% accuracy.</p>
+              <div class="mt-auto">
+                <a href="#" class="btn btn-primary">Blog Post</a>
+                <a href="#" class="btn btn-secondary">Source Code</a>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
   <!-- Skills Section -->
   <section id="skills" class="skills-section bg-white py-5">
@@ -442,31 +477,31 @@
       </div>
       <div class="row mb-4">
         <div class="col-lg-2 col-md-4 mb-4">
-          <a href="https://linkedin.com/in/yourusername" target="_blank" aria-label="Visit Jerry Odhiambo's LinkedIn Profile">
+          <a href="https://www.linkedin.com/in/jerry-odhiambo/" target="_blank" aria-label="Visit Jerry Odhiambo's LinkedIn Profile">
             <img src="icons/linkedin.png" alt="LinkedIn Profile Icon" class="social-icon">
             <p>LinkedIn</p>
           </a>
         </div>
         <div class="col-lg-2 col-md-4 mb-4">
-          <a href="https://twitter.com/yourusername" target="_blank" aria-label="Visit Jerry Odhiambo's Twitter Profile">
+          <a href="https://twitter.com/_de_ve_lo_pe_r" target="_blank" aria-label="Visit Jerry Odhiambo's Twitter Profile">
             <img src="icons/twitter.png" alt="Twitter Profile Icon" class="social-icon">
             <p>Twitter</p>
           </a>
         </div>
         <div class="col-lg-2 col-md-4 mb-4">
-          <a href="https://github.com/yourusername" target="_blank" aria-label="Visit Jerry Odhiambo's GitHub Profile">
+          <a href="https://github.com/Wuodmadam" target="_blank" aria-label="Visit Jerry Odhiambo's GitHub Profile">
             <img src="icons/github.png" alt="GitHub Profile Icon" class="social-icon">
             <p>GitHub</p>
           </a>
         </div>
         <div class="col-lg-2 col-md-4 mb-4">
-          <a href="https://medium.com/@yourusername" target="_blank" aria-label="Visit Jerry Odhiambo's Medium Profile">
+          <a href="https://medium.com/@jerrypatrick999" target="_blank" aria-label="Visit Jerry Odhiambo's Medium Profile">
             <img src="icons/medium.png" alt="Medium Profile Icon" class="social-icon">
             <p>Medium</p>
           </a>
         </div>
         <div class="col-lg-2 col-md-4 mb-4">
-          <a href="https://youtube.com/@yourusername" target="_blank" aria-label="Visit Jerry Odhiambo's YouTube Profile">
+          <a href="https://youtube.com/" target="_blank" aria-label="Visit Jerry Odhiambo's YouTube Profile">
             <img src="icons/youtube.png" alt="YouTube Profile Icon" class="social-icon">
             <p>YouTube</p>
           </a>
