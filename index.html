@@ -64,6 +64,34 @@
       padding: 100px 0;
       text-align: center;
     }
+    .about-section .card {
+  background-color: #1e293b;
+  border-radius: 12px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.about-section .card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+.about-section .rounded-circle {
+  border: 4px solid #3b82f6;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+.about-section .list-unstyled li {
+  display: flex;
+  align-items: center;
+  font-size: 1.1rem;
+}
+.about-section .text-primary {
+  color: #3b82f6 !important;
+}
+.light-mode .about-section .card {
+  background-color: #ffffff;
+  color: #1f2937;
+}
+.light-mode .about-section .text-primary {
+  color: #1e40af !important;
+}
     .about-section img {
       width: 250px;
       height: 250px;
@@ -205,6 +233,40 @@
         width: 200px;
         height: 200px;
     }
+    .projects-section .card {
+  min-height: 450px; /* Fixed minimum height for all cards */
+}
+.projects-section .card-img-top {
+  height: 200px; /* Fixed height for images */
+  object-fit: cover; /* Ensure images fill the space without distortion */
+}
+.projects-section .card-body {
+  display: flex;
+  flex-direction: column;
+}
+.projects-section .card-text {
+  flex-grow: 1; /* Allows text to take available space */
+  min-height: 100px; /* Ensures consistent text area height */
+  overflow: hidden; /* Prevents overflow if text is too long */
+}
+.projects-section .mt-auto {
+  margin-top: auto; /* Pushes buttons to the bottom of the card */
+}
+.light-mode .projects-section .card {
+  background-color: #ffffff;
+  color: #1f2937;
+}
+@media (max-width: 768px) {
+  .projects-section .card {
+    min-height: 400px; /* Slightly smaller height for mobile */
+  }
+  .projects-section .card-img-top {
+    height: 150px; /* Smaller image height for mobile */
+  }
+  .projects-section .card-text {
+    min-height: 80px; /* Adjust text area for mobile */
+  }
+}
 }
   </style>
 </head>
@@ -262,43 +324,47 @@
     </div>
   </section>
 
-  <!-- Projects Section -->
-  <section id="projects" class="projects-section bg-light py-5">
-    <div class="container" data-aos="fade-up">
-      <h2 class="text-center mb-5" style="font-weight: bold; color: #1f2937;">Projects</h2>
-      <div class="row">
-        <!-- Project 1 -->
-        <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="100">
-          <div class="card">
-            <img src="images/projects/netflix1.png" class="card-img-top" alt="Netflix Data Analysis Project" loading="lazy">
-            <div class="card-body">
-              <h5 class="card-title">Netflix Data Analysis</h5>
-              <p class="card-text">Analyzed Netflix viewing trends using Python and Pandas, uncovering insights into user preferences and content performance.</p>
-              <canvas id="netflixChart" height="100"></canvas>
+ <!-- Projects Section -->
+<section id="projects" class="projects-section bg-light py-5">
+  <div class="container" data-aos="fade-up">
+    <h2 class="text-center mb-5" style="font-weight: bold; color: #1f2937;">Projects</h2>
+    <div class="row">
+      <!-- Project 1 -->
+      <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="100">
+        <div class="card h-100">
+          <img src="images/projects/netflix1.png" class="card-img-top" alt="Netflix Data Wrangling Project" loading="lazy">
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title">Netflix Data Wrangling</h5>
+            <p class="card-text flex-grow-1">Converted a chaotic Netflix dataset into a structured, insight-rich resource, unlocking meaningful and actionable analysis.</p>
+            <div class="mt-auto">
               <a href="https://medium.com/@jerrypatrick999/data-and-ai-journey-at-cybershujaa-a84312c40bd8" class="btn btn-primary" target="_blank">Blog Post</a>
-              <a href="#" class="btn btn-secondary">Source Code</a>
+              <a href="https://www.kaggle.com/code/odhiambojerry/netflixdatawrangling" class="btn btn-secondary">Source Code</a>
             </div>
           </div>
         </div>
-        <!-- Project 2 -->
-        <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="200">
-          <div class="card">
-            <img src="https://via.placeholder.com/300x200?text=Project+2" class="card-img-top" alt="E-Commerce Dashboard Project" loading="lazy">
-            <div class="card-body">
-              <h5 class="card-title">E-Commerce Dashboard</h5>
-              <p class="card-text">Built an interactive dashboard with Tableau to visualize e-commerce sales data, driving strategic decisions.</p>
-              <a href="#" class="btn btn-primary">Blog Post</a>
-              <a href="#" class="btn btn-secondary">Source Code</a>
+      </div>
+      <!-- Project 2 -->
+      <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="200">
+        <div class="card h-100">
+          <img src="images/projects/pairplots for multivariate analysis.png" class="card-img-top" alt="Titanic Disaster Dashboard Project" loading="lazy">
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title">Titanic Disaster Dashboard</h5>
+            <p class="card-text flex-grow-1">Explored Titanic dataset, analyzing survival factors via profiling, univariate, bivariate, multivariate analysis, and outlier detection.</p><br/>
+            <div class="mt-auto">
+              <a href="https://github.com/Wuodmadam/Kaggle-notebook-Titanic/blob/master/README.md" class="btn btn-primary">Blog Post</a>
+              <a href="https://github.com/Wuodmadam/Kaggle-notebook-Titanic/blob/master/TitanicDataset.ipynb" class="btn btn-secondary">Source Code</a>
             </div>
           </div>
         </div>
-        <!-- Project 3 -->
-        <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="300">
-          <div class="card">
-            <img src="https://via.placeholder.com/300x200?text=Project+3" class="card-img-top" alt="Predictive Modeling Project" loading="lazy">
-            <div class="card-body">
-              <h5 class="card-title">Predictive Modeling</h5>
-              <p class="card-text">Developed a machine learning model using Scikit-learn to predict customer churn with 85% accuracy.</p>
+      </div>
+      <!-- Project 3 -->
+      <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="300">
+        <div class="card h-100">
+          <img src="https://via.placeholder.com/300x200?text=Project+3" class="card-img-top" alt="Predictive Modeling Project" loading="lazy">
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title">Predictive Modeling</h5>
+            <p class="card-text flex-grow-1">Developed a machine learning model using Scikit-learn to predict customer churn with 85% accuracy.</p>
+            <div class="mt-auto">
               <a href="#" class="btn btn-primary">Blog Post</a>
               <a href="#" class="btn btn-secondary">Source Code</a>
             </div>
@@ -306,7 +372,8 @@
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
   <!-- Skills Section -->
   <section id="skills" class="skills-section bg-white py-5">
