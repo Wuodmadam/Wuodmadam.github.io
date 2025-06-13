@@ -61,8 +61,22 @@
     .hero-section {
       background: linear-gradient(135deg, #1e40af, #0f172a);
       color: #e0e0e0;
-      padding: 100px 0;
+      min-height: 100vh; /* Full viewport height */
+      display: flex;
+      align-items: center; /* Vertical centering */
+      justify-content: center; /* Horizontal centering */
       text-align: center;
+      padding: 60px 0; /* Reduced padding for better balance */
+    }
+    .hero-section .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .hero-section .btn-primary {
+      margin-top: 1.5rem; /* Consistent spacing */
+      min-width: 200px; /* Fixed width for button */
     }
     .about-section .card {
       background-color: #1e293b;
@@ -86,9 +100,9 @@
       color: #3b82f6 !important;
     }
     .about-section .scrollable-content {
-      max-height: 300px; /* Fixed height for scrollable area */
-      overflow-y: auto; /* Enable vertical scrolling */
-      padding-right: 10px; /* Space for scrollbar */
+      max-height: 300px;
+      overflow-y: auto;
+      padding-right: 10px;
     }
     .about-section .scrollable-content::-webkit-scrollbar {
       width: 8px;
@@ -121,23 +135,23 @@
       background: #1e3a8a;
     }
     .projects-section .card {
-      min-height: 450px; /* Fixed minimum height for all cards */
+      min-height: 450px;
     }
     .projects-section .card-img-top {
-      height: 200px; /* Fixed height for images */
-      object-fit: cover; /* Ensure images fill the space without distortion */
+      height: 200px;
+      object-fit: cover;
     }
     .projects-section .card-body {
       display: flex;
       flex-direction: column;
     }
     .projects-section .card-text {
-      flex-grow: 1; /* Allows text to take available space */
-      min-height: 100px; /* Ensures consistent text area height */
-      overflow: hidden; /* Prevents overflow if text is too long */
+      flex-grow: 1;
+      min-height: 100px;
+      overflow: hidden;
     }
     .projects-section .mt-auto {
-      margin-top: auto; /* Pushes buttons to the bottom of the card */
+      margin-top: auto;
     }
     .light-mode .projects-section .card {
       background-color: #ffffff;
@@ -181,15 +195,15 @@
       transform: scale(1.1);
     }
     .contact-section .social-icon {
-      width: 32px; /* Reduced size */
+      width: 32px;
       height: 32px;
-      border-radius: 50%; /* Circular icons */
+      border-radius: 50%;
       padding: 8px;
-      background-color: #3b82f6; /* Primary color background */
+      background-color: #3b82f6;
       transition: background-color 0.3s, opacity 0.3s;
     }
     .contact-section .social-icon:hover {
-      background-color: #2563eb; /* Darker on hover */
+      background-color: #2563eb;
       opacity: 1;
     }
     .contact-section .social-icon-wrapper p {
@@ -236,20 +250,6 @@
     .form-label {
       color: #e0e0e0;
     }
-    .form-message {
-  max-width: 600px;
-  margin: 0 auto;
-  border-radius: 8px;
-  font-size: 1rem;
-}
-.light-mode .form-message.bg-success {
-  background-color: #15803d !important;
-  color: #ffffff !important;
-}
-.light-mode .form-message.bg-danger {
-  background-color: #b91c1c !important;
-  color: #ffffff !important;
-}
     .btn-primary {
       background-color: #3b82f6;
       border-color: #3b82f6;
@@ -278,6 +278,20 @@
       background-color: #6b7280;
       border-color: #6b7280;
     }
+    .form-message {
+      max-width: 600px;
+      margin: 0 auto;
+      border-radius: 8px;
+      font-size: 1rem;
+    }
+    .light-mode .form-message.bg-success {
+      background-color: #15803d !important;
+      color: #ffffff !important;
+    }
+    .light-mode .form-message.bg-danger {
+      background-color: #b91c1c !important;
+      color: #ffffff !important;
+    }
     @media (max-width: 992px) {
       .navbar-collapse {
         background-color: #0f172a;
@@ -288,7 +302,7 @@
         z-index: 1000;
         padding: 10px;
         border-radius: 8px;
-        box-shadow: 0Kristin 4px 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
         max-height: calc(100vh - 56px);
         overflow-y: auto;
         transition: opacity 0.3s ease, transform 0.3s ease;
@@ -298,7 +312,7 @@
       }
       .navbar-collapse.show {
         display: block !important;
-        opacity: #e0e0e0 !important;
+        opacity: 1 !important;
         visibility: visible !important;
         transform: translateY(0);
       }
@@ -307,7 +321,6 @@
         flex-direction: column;
       }
       .nav-link {
-        background-color: #1e293b;
         padding: 8px 12px;
         color: #e0e0e0 !important;
         font-size: 1rem;
@@ -321,25 +334,24 @@
         z-index: 1001;
       }
       .hero-section {
-        background-color: #1f293b !important;
-      padding: 60px 0;
+        min-height: 80vh; /* Slightly shorter for mobile */
+        padding: 40px 0; /* Reduced padding */
       }
       .about-section .rounded-circle {
         width: 200px;
         height: 200px;
       }
-      .about-section .projects-section .card {
-        background-color: #ffffff;
-        min-height: 250px;
+      .about-section .scrollable-content {
+        max-height: 250px;
       }
       .projects-section .card {
         min-height: 400px;
       }
       .projects-section .card-img-top {
-      height: 180px;
+        height: 150px;
       }
       .projects-section .card-text {
-      height: 80px;
+        min-height: 80px;
       }
     }
     @media (max-width: 768px) {
@@ -349,18 +361,15 @@
         padding: 6px;
       }
       .contact-section .social-icon-wrapper p {
-        color: #1e0e0e !important;
         font-size: 0.8rem;
       }
-      .contact-section .card {
-        background-color: #f9fafb;
-      padding: 15px !important;
+      .contact-section .social-icons-container {
+        padding: 15px;
       }
       .contact-section .row.mb-5 {
-        margin-bottom: 0 3rem !important;
+        margin-bottom: 3rem !important;
       }
     }
-  
   </style>
 </head>
 <body class="bg-gray-900">
@@ -370,7 +379,7 @@
   </button>
 
   <!-- Hero Section -->
-  <section id="hero-section" class="section">
+  <section id="home" class="hero-section">
     <div class="container" data-aos="fade-up">
       <h1 class="display-4 fw-bold mb-4">Jerry Odhiambo</h1>
       <p class="lead mb-4">Data Scientist | Python Developer | Software Developer</p>
@@ -381,11 +390,11 @@
   <!-- Sticky Navigation Bar -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
-      <div class="navbar-brand" href="#home">Portfolio</div>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-label="Toggle navigation">
-        <div class="navbar-toggler-icon"></div>
+      <a class="navbar-brand" href="#home">Portfolio</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="navbar-collapse" id="navbarNav">
+      <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
           <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
           <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
@@ -436,14 +445,12 @@
     <div class="container" data-aos="fade-up">
       <h2 class="text-center mb-5" style="font-weight: bold; color: #1f2937;">Projects</h2>
       <div class="row">
-        <!-- Project 1 -->
-         <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="300">
+        <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="300">
           <div class="card h-100">
-            <img src="images/projects/bi dashboard.png" class="card-img-top" alt="Hotel Data visualization" loading="lazy">
+            <img src="/images/projects/bi dashboard.png" class="card-img-top" alt="Hotel Data visualization" loading="lazy">
             <div class="card-body d-flex flex-column">
-             <h5 class="card-title">Visualization with Power BI</h5>
-<p class="card-text flex-grow-1">Created an interactive Power BI dashboard to visualize hotel occupancy rates, revenue trends, and guest satisfaction metrics, improving decision-making by 20%.</p>
-</p>
+              <h5 class="card-title">Hotel Data Visualization</h5>
+              <p class="card-text flex-grow-1">Created an interactive Power BI dashboard to visualize hotel occupancy rates, revenue trends, and guest satisfaction metrics, improving decision-making by 20%.</p>
               <div class="mt-auto">
                 <a href="https://github.com/Wuodmadam/Hotel-dashboard-with-power-BI/blob/master/README.md" class="btn btn-primary">Blog Post</a>
                 <a href="https://github.com/Wuodmadam/Hotel-dashboard-with-power-BI" class="btn btn-secondary">Source Code</a>
@@ -464,12 +471,11 @@
             </div>
           </div>
         </div>
-        <!-- Project 2 -->
         <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="200">
           <div class="card h-100">
             <img src="images/projects/pairplots for multivariate analysis.png" class="card-img-top" alt="Titanic Disaster Dashboard Project" loading="lazy">
             <div class="card-body d-flex flex-column">
-              <h5 class="card-title">EDA with Python</h5>
+              <h5 class="card-title">Titanic Disaster Dashboard</h5>
               <p class="card-text flex-grow-1">Explored Titanic dataset, analyzing survival factors via profiling, univariate, bivariate, multivariate analysis, and outlier detection.</p>
               <div class="mt-auto">
                 <a href="https://github.com/Wuodmadam/Kaggle-notebook-Titanic/blob/master/README.md" class="btn btn-primary">Blog Post</a>
@@ -478,8 +484,6 @@
             </div>
           </div>
         </div>
-        <!-- Project 3 -->
-        
       </div>
     </div>
   </section>
@@ -489,7 +493,6 @@
     <div class="container" data-aos="fade-up">
       <h2 class="text-center mb-5" style="font-weight: bold; color: #1f2937;">Skills</h2>
       <div class="row">
-        <!-- Skill 1 -->
         <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="100">
           <div class="card">
             <img src="images/skills/1.png" class="card-img-top" alt="Python Skill Icon" loading="lazy">
@@ -500,7 +503,6 @@
             </div>
           </div>
         </div>
-        <!-- Skill 2 -->
         <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="200">
           <div class="card">
             <img src="images/skills/2.png" class="card-img-top" alt="Data Visualization Skill Icon" loading="lazy">
@@ -511,7 +513,6 @@
             </div>
           </div>
         </div>
-        <!-- Skill 3 -->
         <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="300">
           <div class="card">
             <img src="images/skills/3.png" class="card-img-top" alt="SQL Skill Icon" loading="lazy">
@@ -522,7 +523,6 @@
             </div>
           </div>
         </div>
-        <!-- Skill 4 -->
         <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="400">
           <div class="card">
             <img src="images/skills/4.png" class="card-img-top" alt="Data Storytelling Skill Icon" loading="lazy">
@@ -589,7 +589,6 @@
           </div>
         </div>
       </div>
-      <!-- Contact Form -->
       <form id="contact-form" action="https://formspree.io/f/your-form-id" method="POST" class="mx-auto" style="max-width: 600px;">
         <div class="mb-4">
           <label for="name" class="form-label">Your Name</label>
