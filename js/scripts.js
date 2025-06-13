@@ -1,102 +1,48 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Initialize AOS
-    AOS.init({ duration: 800, once: true });
+  // Dark/Light Mode Toggle
+  const toggleButton = document.getElementById('theme-toggle');
+  const body = document.body;
+  const savedTheme = localStorage.getItem('theme');
 
-    // Dark/Light Mode Toggle with localStorage
-    const toggleButton = document.getElementById('theme-toggle');
-    const body = document.body;
-    const theme = localStorage.getItem('theme');
+  if (savedTheme === 'dark') {
+    body.classList.add('dark-mode');
+  }
 
-    if (theme === 'light') {
-        body.classList.add('light-mode');
-        toggleButton.innerHTML = '<i class="fas fa-moon"></i>';
-    } else {
-        toggleButton.innerHTML = '<i class="fas fa-sun"></i>';
-    }
+  toggleButton.addEventListener('click', () => {
+    body.classList.toggle('dark-mode');
+    const isDark = body.classList.contains('dark-mode');
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+  });
 
-    toggleButton.addEventListener('click', () => {
-        body.classList.toggle('light-mode');
-        const isLight = body.classList.contains('light-mode');
-        toggleButton.innerHTML = isLight ? '<i class="fas fa-moon"></i>' : '<i class="fas fa-sun"></i>';
-        localStorage.setItem('theme', isLight ? 'light' : 'dark');
+  // Mobile Navigation Toggle
+  const menuToggle = document.getElementById('mobile-menu-toggle');
+  const navMenu = document.getElementById('nav-menu');
+
+  if (menuToggle && navMenu) {
+    menuToggle.addEventListener('click', () => {
+      navMenu.classList.toggle('hidden');
     });
+  }
 
-    // Navbar toggle functionality
-    const navbarToggler = document.querySelector('.navbar-toggler');
-    const navbarCollapse = document.querySelector('#navbarNav');
-    const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
+  // Smooth Scrolling for Navigation Links
+  const navLinks = document.querySelectorAll('nav a[href^=\"#\"]');
+  navLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const targetId = link.getAttribute('href');
+      const targetEl = document.querySelector(targetId);
 
-    // Initialize Bootstrap Collapse
-    const bsCollapse = new bootstrap.Collapse(navbarCollapse, {
-        toggle: false
-    });
-
-    // Toggle navbar on click
-    navbarToggler.addEventListener('click', (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        bsCollapse.toggle();
-        navbarToggler.setAttribute('aria-expanded', navbarCollapse.classList.contains('show'));
-    });
-
-    // Prevent clicks inside navbar from closing it
-    navbarCollapse.addEventListener('click', (e) => {
-        e.stopPropagation();
-    });
-
-    // Smooth scrolling and collapse navbar on link click
-    navLinks.forEach(link => {
-        link.addEventListener('click', (e) => {
-            e.preventDefault();
-            const targetId = link.getAttribute('href');
-            const targetElement = document.querySelector(targetId);
-
-            if (targetElement) {
-                const navbarHeight = document.querySelector('.navbar').offsetHeight;
-                const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - navbarHeight;
-
-                window.scrollTo({
-                    top: targetPosition,
-                    behavior: 'smooth'
-                });
-
-                // Close navbar after clicking a link
-                bsCollapse.hide();
-                navbarToggler.setAttribute('aria-expanded', 'false');
-            }
+      if (targetEl) {
+        window.scrollTo({
+          top: targetEl.offsetTop - 80,
+          behavior: 'smooth'
         });
-    });
+      }
 
-    // Close navbar when clicking outside (debounced for mobile)
-    let isToggling = false;
-    document.addEventListener('click', (e) => {
-        if (isToggling) return;
-        if (!navbarCollapse.contains(e.target) && !navbarToggler.contains(e.target) && navbarCollapse.classList.contains('show')) {
-            isToggling = true;
-            bsCollapse.hide();
-            navbarToggler.setAttribute('aria-expanded', 'false');
-            setTimeout(() => { isToggling = false; }, 300);
-        }
+      // Hide mobile menu after click
+      if (window.innerWidth < 768 && navMenu.classList.contains('hidden') === false) {
+        navMenu.classList.add('hidden');
+      }
     });
-    // Contact Form Submission (handled by Formspree)
-    const form = document.getElementById('contact-form');
-    form.addEventListener('submit', (e) => {
-        e.preventDefault();
-        fetch(form.action, {
-            method: 'POST',
-            body: new FormData(form),
-            headers: {
-                'Accept': 'application/json'
-            }
-        }).then(response => {
-            if (response.ok) {
-                alert('Message sent successfully!');
-                form.reset();
-            } else {
-                alert('There was an error sending your message. Please try again.');
-            }
-        }).catch(() => {
-            alert('There was an error sending your message. Please try again.');
-        });
-    });
+  });
 });
