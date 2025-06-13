@@ -3,168 +3,605 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Jerry Odhiambo - Data Scientist</title>
-  <meta name="description" content="Showcasing data science and development projects by Jerry Odhiambo.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+  <meta name="description" content="Professional portfolio of Jerry Odhiambo, showcasing data science projects, skills, and contact information.">
+  <meta name="keywords" content="portfolio, data science, python, data visualization, SQL, data storytelling">
+  <meta name="author" content="Jerry Odhiambo">
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:title" content="Jerry Odhiambo - Data Scientist Portfolio">
+  <meta property="og:description" content="Explore the professional portfolio of Jerry Odhiambo, showcasing data science projects and skills.">
+  <meta property="og:image" content="https://yourdomain.com/images/og-image.jpg">
+  <meta property="og:url" content="https://yourdomain.com">
+  <!-- Twitter Card Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:creator" content="@yourusername">
+  <title>Jerry Odhiambo - Professional Portfolio</title>
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<style>
-  .dark-mode {
-    background-color: #111827;
-    color: #f9fafb;
-  }
-  .dark-mode header,
-  .dark-mode footer {
-    background-color: #0f172a;
-  }
-  .dark-mode input,
-  .dark-mode textarea {
-    background-color: #1f2937;
-    color: #f9fafb;
-    border-color: #374151;
-  }
-  .dark-mode input:focus,
-  .dark-mode textarea:focus {
-    border-color: #2563eb;
-  }
-</style>
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous">
+  <!-- AOS for animations -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" integrity="sha512-1cK78a1o+ht2JcaW6g8OXYwqpev9+6GqOkz9xmBN9iUUhIndKtxwILGWYOSibOKjLsEdjyjZvYDq/cZwNeak0w==" crossorigin="anonymous">
+  <!-- Chart.js for data visualization -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      scroll-behavior: smooth;
+      background-color: #121212;
+      color: #e0e0e0;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    .light-mode {
+      background-color: #f9fafb;
+      color: #1f2937;
+    }
+    .light-mode .bg-dark {
+      background-color: #1f2937 !important;
+    }
+    .light-mode .bg-light {
+      background-color: #f9fafb !important;
+    }
+    .light-mode .bg-white {
+      background-color: #ffffff !important;
+    }
+    .light-mode .card {
+      background-color: #ffffff;
+      color: #1f2937;
+    }
+    .light-mode .navbar-dark .navbar-nav .nav-link {
+      color: #e0e0e0;
+    }
+    .light-mode .navbar-dark .navbar-nav .nav-link:hover {
+      color: #93c5fd;
+    }
+    .hero-section {
+      background: linear-gradient(135deg, #1e40af, #0f172a);
+      color: #e0e0e0;
+      padding: 100px 0;
+      text-align: center;
+    }
+    .about-section .card {
+      background-color: #1e293b;
+      border-radius: 12px;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .about-section .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+    }
+    .about-section .rounded-circle {
+      border: 4px solid #3b82f6;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    }
+    .about-section .list-unstyled li {
+      display: flex;
+      align-items: center;
+      font-size: 1.1rem;
+    }
+    .about-section .text-primary {
+      color: #3b82f6 !important;
+    }
+    .about-section .scrollable-content {
+      max-height: 300px; /* Fixed height for scrollable area */
+      overflow-y: auto; /* Enable vertical scrolling */
+      padding-right: 10px; /* Space for scrollbar */
+    }
+    .about-section .scrollable-content::-webkit-scrollbar {
+      width: 8px;
+    }
+    .about-section .scrollable-content::-webkit-scrollbar-track {
+      background: #2d3748;
+      border-radius: 4px;
+    }
+    .about-section .scrollable-content::-webkit-scrollbar-thumb {
+      background: #3b82f6;
+      border-radius: 4px;
+    }
+    .about-section .scrollable-content::-webkit-scrollbar-thumb:hover {
+      background: #2563eb;
+    }
+    .light-mode .about-section .card {
+      background-color: #ffffff;
+      color: #1f2937;
+    }
+    .light-mode .about-section .text-primary {
+      color: #1e40af !important;
+    }
+    .light-mode .about-section .scrollable-content::-webkit-scrollbar-track {
+      background: #e5e7eb;
+    }
+    .light-mode .about-section .scrollable-content::-webkit-scrollbar-thumb {
+      background: #1e40af;
+    }
+    .light-mode .about-section .scrollable-content::-webkit-scrollbar-thumb:hover {
+      background: #1e3a8a;
+    }
+    .projects-section .card {
+      min-height: 450px; /* Fixed minimum height for all cards */
+    }
+    .projects-section .card-img-top {
+      height: 200px; /* Fixed height for images */
+      object-fit: cover; /* Ensure images fill the space without distortion */
+    }
+    .projects-section .card-body {
+      display: flex;
+      flex-direction: column;
+    }
+    .projects-section .card-text {
+      flex-grow: 1; /* Allows text to take available space */
+      min-height: 100px; /* Ensures consistent text area height */
+      overflow: hidden; /* Prevents overflow if text is too long */
+    }
+    .projects-section .mt-auto {
+      margin-top: auto; /* Pushes buttons to the bottom of the card */
+    }
+    .light-mode .projects-section .card {
+      background-color: #ffffff;
+      color: #1f2937;
+    }
+    .card {
+      background-color: #1e293b;
+      color: #e0e0e0;
+      border: none;
+      border-radius: 12px;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+    }
+    .card-img-top {
+      max-height: 200px;
+      object-fit: cover;
+      background-color: #1e293b;
+      border-top-left-radius: 12px;
+      border-top-right-radius: 12px;
+    }
+    .skills-section .card-img-top {
+      height: 180px;
+      object-fit: contain;
+      padding: 20px;
+      background-color: #1e293b;
+    }
+    .contact-section .social-icons-container {
+      background-color: #1e293b;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    }
+    .contact-section .social-icon-wrapper {
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+    .contact-section .social-icon-wrapper:hover {
+      transform: scale(1.1);
+    }
+    .contact-section .social-icon {
+      width: 32px; /* Reduced size */
+      height: 32px;
+      border-radius: 50%; /* Circular icons */
+      padding: 8px;
+      background-color: #3b82f6; /* Primary color background */
+      transition: background-color 0.3s, opacity 0.3s;
+    }
+    .contact-section .social-icon:hover {
+      background-color: #2563eb; /* Darker on hover */
+      opacity: 1;
+    }
+    .contact-section .social-icon-wrapper p {
+      color: #e0e0e0;
+      font-size: 0.9rem;
+      margin-bottom: 0;
+    }
+    .light-mode .contact-section .social-icons-container {
+      background-color: #ffffff;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+    .light-mode .contact-section .social-icon-wrapper p {
+      color: #1f2937;
+    }
+    .light-mode .contact-section .social-icon {
+      background-color: #1e40af;
+    }
+    .light-mode .contact-section .social-icon:hover {
+      background-color: #1e3a8a;
+    }
+    .navbar {
+      background-color: #0f172a;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+      transition: background-color 0.3s;
+    }
+    .navbar-dark .navbar-nav .nav-link {
+      color: #e0e0e0;
+    }
+    .navbar-dark .navbar-nav .nav-link:hover {
+      color: #93c5fd;
+    }
+    .form-control {
+      background-color: #1e293b;
+      color: #e0e0e0;
+      border: 1px solid #4b5563;
+      border-radius: 8px;
+    }
+    .form-control:focus {
+      background-color: #1e293b;
+      color: #e0e0e0;
+      border-color: #3b82f6;
+      box-shadow: 0 0 5px rgba(59, 130, 246, 0.5);
+    }
+    .form-label {
+      color: #e0e0e0;
+    }
+    .btn-primary {
+      background-color: #3b82f6;
+      border-color: #3b82f6;
+      border-radius: 8px;
+      transition: background-color 0.3s;
+    }
+    .btn-primary:hover {
+      background-color: #2563eb;
+      border-color: #2563eb;
+    }
+    .btn-outline-primary {
+      border-color: #3b82f6;
+      color: #3b82f6;
+      border-radius: 8px;
+    }
+    .btn-outline-primary:hover {
+      background-color: #3b82f6;
+      color: #ffffff;
+    }
+    .btn-secondary {
+      background-color: #4b5563;
+      border-color: #4b5563;
+      border-radius: 8px;
+    }
+    .btn-secondary:hover {
+      background-color: #6b7280;
+      border-color: #6b7280;
+    }
+    @media (max-width: 992px) {
+      .navbar-collapse {
+        background-color: #0f172a;
+        position: absolute;
+        top: 100%;
+        right: 10px;
+        width: 200px;
+        z-index: 1000;
+        padding: 10px;
+        border-radius: 8px;
+        box-shadow: 0Kristin 4px 10px;
+        max-height: calc(100vh - 56px);
+        overflow-y: auto;
+        transition: opacity 0.3s ease, transform 0.3s ease;
+        transform: translateY(-10px);
+        opacity: 0;
+        visibility: hidden;
+      }
+      .navbar-collapse.show {
+        display: block !important;
+        opacity: #e0e0e0 !important;
+        visibility: visible !important;
+        transform: translateY(0);
+      }
+      .navbar-nav {
+        width: 100%;
+        flex-direction: column;
+      }
+      .nav-link {
+        background-color: #1e293b;
+        padding: 8px 12px;
+        color: #e0e0e0 !important;
+        font-size: 1rem;
+        transition: background-color 0.2s, color 0.2s;
+      }
+      .nav-link:hover {
+        background-color: #1e293b;
+        color: #93c5fd !important;
+      }
+      .navbar-toggler {
+        z-index: 1001;
+      }
+      .hero-section {
+        background-color: #1f293b !important;
+      padding: 60px 0;
+      }
+      .about-section .rounded-circle {
+        width: 200px;
+        height: 200px;
+      }
+      .about-section .projects-section .card {
+        background-color: #ffffff;
+        min-height: 250px;
+      }
+      .projects-section .card {
+        min-height: 400px;
+      }
+      .projects-section .card-img-top {
+      height: 180px;
+      }
+      .projects-section .card-text {
+      height: 80px;
+      }
+    }
+    @media (max-width: 768px) {
+      .contact-section .social-icon {
+        width: 28px;
+        height: 28px;
+        padding: 6px;
+      }
+      .contact-section .social-icon-wrapper p {
+        color: #1e0e0e !important;
+        font-size: 0.8rem;
+      }
+      .contact-section .card {
+        background-color: #f9fafb;
+      padding: 15px !important;
+      }
+      .contact-section .row.mb-5 {
+        margin-bottom: 0 3rem !important;
+      }
+    }
+  
+  </style>
 </head>
-<body class="font-sans transition-colors duration-300">
+<body class="bg-gray-900">
+  <!-- Dark Mode Toggle -->
+  <button id="theme-toggle" class="fixed top-4 right-4 z-50 btn btn-outline-secondary" aria-label="Toggle dark mode">
+    <i class="fas fa-sun"></i>
+  </button>
 
-<!-- Toggle Theme Button -->
-<button id="theme-toggle" class="fixed top-4 right-4 bg-white border px-3 py-2 rounded-xl shadow z-50">
-  <i class="fas fa-moon"></i>
-</button>
+  <!-- Hero Section -->
+  <section id="hero-section" class="section">
+    <div class="container" data-aos="fade-up">
+      <h1 class="display-4 fw-bold mb-4">Jerry Odhiambo</h1>
+      <p class="lead mb-4">Data Scientist | Python Developer | Software Developer</p>
+      <a href="assets/Jerry_Odhiambo_CV.pdf" class="btn btn-primary btn-lg" download>Download Resume</a>
+    </div>
+  </section>
 
-<!-- Header -->
-<header class="fixed top-0 w-full bg-white/80 backdrop-blur-md shadow z-40">
-  <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-    <h1 class="text-xl font-serif text-primary">Jerry Odhiambo</h1>
-    <button id="mobile-menu-toggle" class="md:hidden text-xl">
-      <i class="fas fa-bars"></i>
-    </button>
-    <nav id="nav-menu" class="hidden md:flex gap-6 text-sm font-medium">
-      <a href="#about" class="hover:text-secondary transition">About</a>
-      <a href="#projects" class="hover:text-secondary transition">Projects</a>
-      <a href="#skills" class="hover:text-secondary transition">Skills</a>
-      <a href="#contact" class="hover:text-secondary transition">Contact</a>
-    </nav>
-  </div>
-</header>
-
-<!-- Hero -->
-<section class="min-h-screen flex items-center justify-center bg-gradient-to-br from-primary to-dark text-white text-center px-6 pt-24">
-  <div>
-    <h2 class="text-4xl md:text-6xl font-serif mb-4">Data Scientist & Developer</h2>
-    <p class="text-lg md:text-xl mb-6">Creating insight-driven solutions with Python, SQL, and storytelling</p>
-    <a href="assets/Jerry_Odhiambo_CV.pdf" download class="inline-block bg-secondary text-white px-6 py-3 rounded-xl shadow hover:bg-primary transition">Download Resume</a>
-  </div>
-</section>
-
-<!-- About -->
-<section id="about" class="py-20 bg-white text-gray-800">
-  <div class="max-w-5xl mx-auto px-4">
-    <h3 class="text-center text-3xl font-serif text-primary mb-10">About Me</h3>
-    <div class="flex flex-col md:flex-row gap-10 items-center">
-      <img src="images/about/1.jpg" alt="Profile Photo" class="rounded-full w-48 h-48 object-cover shadow-lg border-4 border-primary">
-      <div>
-        <p class="mb-4 text-lg leading-relaxed">I’m a passionate data scientist with expertise in Python, SQL, data visualization, and machine learning. I enjoy transforming raw data into actionable insights.</p>
-        <ul class="space-y-2 text-sm">
-          <li><i class="fas fa-graduation-cap text-secondary mr-2"></i>Bachelor's in Computer Science</li>
-          <li><i class="fas fa-certificate text-secondary mr-2"></i>Certified in Data Science & ML</li>
-          <li><i class="fas fa-code text-secondary mr-2"></i>Open-source contributor</li>
-          <li><i class="fas fa-book text-secondary mr-2"></i>Active tech blogger</li>
+  <!-- Sticky Navigation Bar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+      <div class="navbar-brand" href="#home">Portfolio</div>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-label="Toggle navigation">
+        <div class="navbar-toggler-icon"></div>
+      </button>
+      <div class="navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+          <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
         </ul>
       </div>
     </div>
-  </div>
-</section>
+  </nav>
 
-<!-- Projects -->
-<section id="projects" class="py-20 bg-light">
-  <div class="max-w-6xl mx-auto px-4">
-    <h3 class="text-center text-3xl font-serif text-primary mb-12">Projects</h3>
-    <div class="grid md:grid-cols-3 gap-6">
-      <div class="bg-white rounded-xl shadow p-4 flex flex-col">
-        <img src="images/projects/bi dashboard.png" alt="Hotel Dashboard" class="rounded-xl mb-4 object-cover h-48">
-        <h4 class="text-lg font-semibold mb-2">Hotel Data Visualization</h4>
-        <p class="text-sm flex-grow">Power BI dashboard showing occupancy, revenue, and guest metrics, enhancing decision-making by 20%.</p>
-        <div class="mt-4 flex gap-3">
-          <a href="#" class="bg-secondary text-white px-4 py-2 rounded-xl text-sm">Blog</a>
-          <a href="#" class="bg-gray-300 text-gray-800 px-4 py-2 rounded-xl text-sm">Source</a>
+  <!-- About Section -->
+  <section id="about" class="about-section py-5">
+    <div class="container" data-aos="fade-up">
+      <h2 class="text-center mb-5" style="font-weight: bold; color: #3b82f6;">About Me</h2>
+      <div class="row align-items-center">
+        <div class="col-md-4 text-center mb-4 mb-md-0">
+          <figure>
+            <img src="images/about/1.jpg" alt="Jerry Odhiambo Profile Photo" loading="lazy" class="img-fluid rounded-circle shadow-lg">
+          </figure>
         </div>
-      </div>
-      <div class="bg-white rounded-xl shadow p-4 flex flex-col">
-        <img src="images/projects/netflix1.png" alt="Netflix Project" class="rounded-xl mb-4 object-cover h-48">
-        <h4 class="text-lg font-semibold mb-2">Netflix Data Wrangling</h4>
-        <p class="text-sm flex-grow">Transformed chaotic Netflix data into structured, actionable insights using Python and Pandas.</p>
-        <div class="mt-4 flex gap-3">
-          <a href="#" class="bg-secondary text-white px-4 py-2 rounded-xl text-sm">Blog</a>
-          <a href="#" class="bg-gray-300 text-gray-800 px-4 py-2 rounded-xl text-sm">Source</a>
-        </div>
-      </div>
-      <div class="bg-white rounded-xl shadow p-4 flex flex-col">
-        <img src="images/projects/pairplots for multivariate analysis.png" alt="Titanic Analysis" class="rounded-xl mb-4 object-cover h-48">
-        <h4 class="text-lg font-semibold mb-2">Titanic Disaster Dashboard</h4>
-        <p class="text-sm flex-grow">Explored Titanic dataset with univariate, bivariate, multivariate analysis, profiling, and outlier detection.</p>
-        <div class="mt-4 flex gap-3">
-          <a href="#" class="bg-secondary text-white px-4 py-2 rounded-xl text-sm">Blog</a>
-          <a href="#" class="bg-gray-300 text-gray-800 px-4 py-2 rounded-xl text-sm">Source</a>
+        <div class="col-md-8">
+          <div class="card bg-dark text-white p-4 rounded-lg shadow-lg">
+            <h3 class="h4 fw-bold mb-3">Hello, I'm Jerry Odhiambo</h3>
+            <div class="scrollable-content">
+              <p class="lead mb-3">A passionate Data Scientist skilled in Python, SQL, and data visualization, turning data into insights.</p>
+              <ul class="list-unstyled mb-4">
+                <li class="mb-2"><i class="fas fa-graduation-cap me-2 text-primary"></i>Bachelor's degree in Computer Science</li>
+                <li class="mb-2"><i class="fas fa-certificate me-2 text-primary"></i>Certified in Data Science and Machine Learning</li>
+                <li class="mb-2"><i class="fas fa-briefcase me-2 text-primary"></i>Explored Titanic dataset, analyzing survival factors via profiling, univariate, bivariate, multivariate analysis, and outlier detection</li>
+                <li class="mb-2"><i class="fas fa-code me-2 text-primary"></i>Active contributor to open-source projects</li>
+                <li><i class="fas fa-book me-2 text-primary"></i>Enjoys sharing knowledge through my blog</li>
+              </ul>
+              <p class="mb-3">In my free time, I explore new technologies and stay updated with the latest trends in data science.</p>
+            </div>
+            <div class="d-flex gap-3 mt-3">
+              <a href="https://www.linkedin.com/in/jerry-odhiambo/" class="btn btn-outline-primary" target="_blank">Connect on LinkedIn</a>
+              <a href="https://github.com/Wuodmadam" class="btn btn-outline-primary" target="_blank">View GitHub</a>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- Skills -->
-<section id="skills" class="py-20 bg-white">
-  <div class="max-w-6xl mx-auto px-4">
-    <h3 class="text-center text-3xl font-serif text-primary mb-12">Skills</h3>
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-      <div class="text-center p-4 shadow rounded-xl">
-        <img src="images/skills/1.png" class="mx-auto h-20 mb-4" alt="Python">
-        <h5 class="font-semibold mb-2">Python</h5>
-        <p class="text-sm">Data analysis, automation, ML</p>
-      </div>
-      <div class="text-center p-4 shadow rounded-xl">
-        <img src="images/skills/2.png" class="mx-auto h-20 mb-4" alt="Data Viz">
-        <h5 class="font-semibold mb-2">Data Visualization</h5>
-        <p class="text-sm">Tableau, Power BI, Matplotlib</p>
-      </div>
-      <div class="text-center p-4 shadow rounded-xl">
-        <img src="images/skills/3.png" class="mx-auto h-20 mb-4" alt="SQL">
-        <h5 class="font-semibold mb-2">SQL</h5>
-        <p class="text-sm">Complex queries, joins, views</p>
-      </div>
-      <div class="text-center p-4 shadow rounded-xl">
-        <img src="images/skills/4.png" class="mx-auto h-20 mb-4" alt="Storytelling">
-        <h5 class="font-semibold mb-2">Data Storytelling</h5>
-        <p class="text-sm">Narratives, visual reports</p>
+  <!-- Projects Section -->
+  <section id="projects" class="projects-section bg-light py-5">
+    <div class="container" data-aos="fade-up">
+      <h2 class="text-center mb-5" style="font-weight: bold; color: #1f2937;">Projects</h2>
+      <div class="row">
+        <!-- Project 1 -->
+         <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="300">
+          <div class="card h-100">
+            <img src="images/projects/bi dashboard.png" class="card-img-top" alt="Hotel Data visualization" loading="lazy">
+            <div class="card-body d-flex flex-column">
+             <h5 class="card-title">Visualization with Power BI</h5>
+<p class="card-text flex-grow-1">Created an interactive Power BI dashboard to visualize hotel occupancy rates, revenue trends, and guest satisfaction metrics, improving decision-making by 20%.</p>
+</p>
+              <div class="mt-auto">
+                <a href="https://github.com/Wuodmadam/Hotel-dashboard-with-power-BI/blob/master/README.md" class="btn btn-primary">Blog Post</a>
+                <a href="https://github.com/Wuodmadam/Hotel-dashboard-with-power-BI" class="btn btn-secondary">Source Code</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="100">
+          <div class="card h-100">
+            <img src="images/projects/netflix1.png" class="card-img-top" alt="Netflix Data Wrangling Project" loading="lazy">
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title">Netflix Data Wrangling</h5>
+              <p class="card-text flex-grow-1">Converted a chaotic Netflix dataset into a structured, insight-rich resource, unlocking meaningful and actionable analysis.</p>
+              <div class="mt-auto">
+                <a href="https://medium.com/@jerrypatrick999/data-and-ai-journey-at-cybershujaa-a84312c40bd8" class="btn btn-primary" target="_blank">Blog Post</a>
+                <a href="https://www.kaggle.com/code/odhiambojerry/netflixdatawrangling" class="btn btn-secondary">Source Code</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Project 2 -->
+        <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="200">
+          <div class="card h-100">
+            <img src="images/projects/pairplots for multivariate analysis.png" class="card-img-top" alt="Titanic Disaster Dashboard Project" loading="lazy">
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title">EDA with Python</h5>
+              <p class="card-text flex-grow-1">Explored Titanic dataset, analyzing survival factors via profiling, univariate, bivariate, multivariate analysis, and outlier detection.</p>
+              <div class="mt-auto">
+                <a href="https://github.com/Wuodmadam/Kaggle-notebook-Titanic/blob/master/README.md" class="btn btn-primary">Blog Post</a>
+                <a href="https://github.com/Wuodmadam/Kaggle-notebook-Titanic/blob/master/TitanicDataset.ipynb" class="btn btn-secondary">Source Code</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Project 3 -->
+        
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- Contact -->
-<section id="contact" class="py-20 bg-light">
-  <div class="max-w-xl mx-auto px-4 text-center">
-    <h3 class="text-3xl font-serif text-primary mb-8">Get In Touch</h3>
-    <form class="space-y-4">
-      <input type="text" placeholder="Your Name" class="w-full p-3 border rounded-xl focus:ring-2 focus:ring-primary">
-      <input type="email" placeholder="Your Email" class="w-full p-3 border rounded-xl focus:ring-2 focus:ring-primary">
-      <textarea rows="5" placeholder="Your Message" class="w-full p-3 border rounded-xl focus:ring-2 focus:ring-primary"></textarea>
-      <button type="submit" class="bg-secondary text-white px-6 py-3 rounded-xl shadow hover:bg-primary transition">Send Message</button>
-    </form>
-  </div>
-</section>
+  <!-- Skills Section -->
+  <section id="skills" class="skills-section bg-white py-5">
+    <div class="container" data-aos="fade-up">
+      <h2 class="text-center mb-5" style="font-weight: bold; color: #1f2937;">Skills</h2>
+      <div class="row">
+        <!-- Skill 1 -->
+        <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="100">
+          <div class="card">
+            <img src="images/skills/1.png" class="card-img-top" alt="Python Skill Icon" loading="lazy">
+            <div class="card-body">
+              <h5 class="card-title">Python</h5>
+              <p class="card-text">Proficient in Python for data analysis, machine learning, and automation.</p>
+              <a href="#" class="btn btn-outline-primary">View Certification</a>
+            </div>
+          </div>
+        </div>
+        <!-- Skill 2 -->
+        <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="200">
+          <div class="card">
+            <img src="images/skills/2.png" class="card-img-top" alt="Data Visualization Skill Icon" loading="lazy">
+            <div class="card-body">
+              <h5 class="card-title">Data Visualization</h5>
+              <p class="card-text">Expertise in Tableau and Matplotlib for creating impactful visualizations.</p>
+              <a href="#" class="btn btn-outline-primary">View Certification</a>
+            </div>
+          </div>
+        </div>
+        <!-- Skill 3 -->
+        <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="300">
+          <div class="card">
+            <img src="images/skills/3.png" class="card-img-top" alt="SQL Skill Icon" loading="lazy">
+            <div class="card-body">
+              <h5 class="card-title">SQL</h5>
+              <p class="card-text">Skilled in writing complex SQL queries for data extraction and analysis.</p>
+              <a href="#" class="btn btn-outline-primary">View Certification</a>
+            </div>
+          </div>
+        </div>
+        <!-- Skill 4 -->
+        <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="400">
+          <div class="card">
+            <img src="images/skills/4.png" class="card-img-top" alt="Data Storytelling Skill Icon" loading="lazy">
+            <div class="card-body">
+              <h5 class="card-title">Data Storytelling</h5>
+              <p class="card-text">Crafting compelling narratives to communicate data insights effectively.</p>
+              <a href="#" class="btn btn-outline-primary">View Certification</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<!-- Footer -->
-<footer class="bg-dark text-white text-center py-4">
-  <p class="text-sm">&copy; 2025 Jerry Odhiambo. All rights reserved.</p>
-</footer>
+  <!-- Contact Section -->
+  <section id="contact" class="contact-section text-center text-white bg-dark py-5">
+    <div class="container" data-aos="fade-up">
+      <h2 class="mb-5" style="font-weight: bold; color: #3b82f6;">Contact Me</h2>
+      <div class="row mb-5 justify-content-center">
+        <div class="col-lg-4 col-md-6 mb-3">
+          <p class="d-flex align-items-center justify-content-center">
+            <i class="fas fa-envelope me-2 text-primary"></i>jerrypatrick999@gmail.com
+          </p>
+        </div>
+        <div class="col-lg-4 col-md-6 mb-3">
+          <p class="d-flex align-items-center justify-content-center">
+            <i class="fas fa-phone me-2 text-primary"></i>+254 713 805 481
+          </p>
+        </div>
+      </div>
+      <div class="row mb-5 justify-content-center">
+        <div class="col-12">
+          <div class="social-icons-container d-flex justify-content-center flex-wrap gap-4">
+            <div class="social-icon-wrapper" data-aos="zoom-in" data-aos-delay="100">
+              <a href="https://www.linkedin.com/in/jerry-odhiambo/" target="_blank" aria-label="Visit Jerry Odhiambo's LinkedIn Profile">
+                <img src="icons/linkedin.png" alt="LinkedIn Profile Icon" class="social-icon">
+                <p class="mt-2">LinkedIn</p>
+              </a>
+            </div>
+            <div class="social-icon-wrapper" data-aos="zoom-in" data-aos-delay="200">
+              <a href="https://twitter.com/_de_ve_lo_pe_r" target="_blank" aria-label="Visit Jerry Odhiambo's Twitter Profile">
+                <img src="icons/twitter.png" alt="Twitter Profile Icon" class="social-icon">
+                <p class="mt-2">Twitter</p>
+              </a>
+            </div>
+            <div class="social-icon-wrapper" data-aos="zoom-in" data-aos-delay="300">
+              <a href="https://github.com/Wuodmadam" target="_blank" aria-label="Visit Jerry Odhiambo's GitHub Profile">
+                <img src="icons/github.png" alt="GitHub Profile Icon" class="social-icon">
+                <p class="mt-2">GitHub</p>
+              </a>
+            </div>
+            <div class="social-icon-wrapper" data-aos="zoom-in" data-aos-delay="400">
+              <a href="https://medium.com/@jerrypatrick999" target="_blank" aria-label="Visit Jerry Odhiambo's Medium Profile">
+                <img src="icons/medium.png" alt="Medium Profile Icon" class="social-icon">
+                <p class="mt-2">Medium</p>
+              </a>
+            </div>
+            <div class="social-icon-wrapper" data-aos="zoom-in" data-aos-delay="500">
+              <a href="https://youtube.com/" target="_blank" aria-label="Visit Jerry Odhiambo's YouTube Profile">
+                <img src="icons/youtube.png" alt="YouTube Profile Icon" class="social-icon">
+                <p class="mt-2">YouTube</p>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Contact Form -->
+      <form id="contact-form" action="https://formspree.io/f/your-form-id" method="POST" class="mx-auto" style="max-width: 600px;">
+        <div class="mb-4">
+          <label for="name" class="form-label">Your Name</label>
+          <input type="text" class="form-control" id="name" name="name" placeholder="Your Name" aria-label="Your Name" required>
+        </div>
+        <div class="mb-4">
+          <label for="email" class="form-label">Your Email</label>
+          <input type="email" class="form-control" id="email" name="email" placeholder="Your Email" aria-label="Your Email" required>
+        </div>
+        <div class="mb-4">
+          <label for="message" class="form-label">Your Message</label>
+          <textarea class="form-control" id="message" name="message" rows="5" placeholder="Your Message" aria-label="Your Message" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary w-100">Send Message</button>
+      </form>
+    </div>
+  </section>
 
-<script src="scripts.js"></script>
+  <!-- Footer -->
+  <footer class="bg-dark text-white text-center py-3">
+    <p>© 2025 Jerry Odhiambo. All rights reserved.</p>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js" integrity="sha512-A7AYk1fGKX6S2SsHywmPkrnzTZHrgiVT7GcQkLGDe2ev0aWb8zejytzS8wjo7PGEXKqJOrjQ4oORtnimIRZBtw==" crossorigin="anonymous"></script>
+  <script src="js/scripts.js"></script>
 </body>
 </html>
