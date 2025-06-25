@@ -66,13 +66,18 @@
       align-items: center; /* Vertical centering */
       justify-content: center; /* Horizontal centering */
       text-align: center;
-      padding: 60px 0; /* Reduced padding for better balance */
+      padding: 30px 0; /* Reduced padding for better balance */
     }
     .hero-section .container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
+     display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 800px;       /* Limit horizontal width */
+  height: 60vh;           /* ✅ Reduce overall height */
+  margin: 0 auto;
+  padding: 1rem;
+  text-align: center;
     }
     .hero-section .btn-primary {
       margin-top: 1.5rem; /* Consistent spacing */
